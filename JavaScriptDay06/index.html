@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<!--Linked to the angular module-->
+<head>
+    <title></title>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div ng-controller="HomeController">
+        <!--HomeController-->
+        <input class="form-control" placeholder="Other Text..." ng-model="Task" />
+        <button class="btn btn-default" ng-click="addTask()">Submit</button>
+        <br />
+    <br />
+        <!--repeat the div and everything inside for every task in the array-->
+        <div class="well" ng-repeat="task in tasks">
+            <h4>{{task}}</h4>
+            <!--t is the value of each individual element in the array-->
+            <!--it is NOT the index position-->
+        </div>
+
+    </div><!--End of HomeController-->
+    <script src="Scripts/angular.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
