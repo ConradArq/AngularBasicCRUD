@@ -9,16 +9,30 @@
 <body>
     <div ng-controller="HomeController">
         <!--HomeController-->
-        <input class="form-control" placeholder="Other Text..." ng-model="Task" />
-        <button class="btn btn-default" ng-click="addTask()">Submit</button>
-        <br />
+        <input class="form-control" placeholder="Enter Name Here..." ng-model="inputName" />
+        <input class="form-control" placeholder="Enter Age Here..." ng-model="inputAge"/>
+        <button class="btn btn-default" ng-click="addContact()">Submit</button>
     <br />
-        <!--repeat the div and everything inside for every task in the array-->
-        <div class="well" ng-repeat="task in tasks">
-            <h4>{{task}}</h4>
-            <!--t is the value of each individual element in the array-->
-            <!--it is NOT the index position-->
-        </div>
+    <br />
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Buttons</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="c in contacts track by $index">
+                <td>{{c.name}}</td>
+                <td>{{c.age}}</td>
+                <td>
+                    <button class="btn btn-warning" ng-click="editContact($index)">Edit</button>
+                    <button class="btn btn-danger" ng-click="deleteContact($index)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
     </div><!--End of HomeController-->
     <script src="Scripts/angular.min.js"></script>

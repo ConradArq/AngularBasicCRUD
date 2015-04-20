@@ -4,12 +4,23 @@
 //1 - name of the controller
 //2 - function to hold the controller itself
 app.controller('HomeController', function ($scope) {
-    //$scope.Task is the value from our input
-    $scope.tasks = [];
-    $scope.tasks[0] = "test";
-    //pulls the value from the input, and pushes it into our array
-    $scope.addTask = function () {
-        $scope.tasks.push($scope.Task);
-        $scope.Task = '';
+    $scope.contacts = [];
+    $scope.contact = function (name, age) {
+        this.name = name;
+        this.age = age;
+    };
+
+    $scope.addContact = function () {
+        $scope.contacts.push(new $scope.contact($scope.inputName, $scope.inputAge));
+        $scope.inputName = ''; $scope.inputAge = '';
+    };
+
+    $scope.deleteContact = function (i) {
+        $scope.contacts.splice(i, 1);
+    };
+
+    $scope.editContact = function (i) {
+        $scope.contacts[i] = new $scope.contact($scope.inputName, $scope.inputAge);
+        $scope.inputName = ''; $scope.inputAge = '';
     };
 });
